@@ -1,0 +1,64 @@
+Projektas: Užduočių Tvarkyklė (TO-DO LIST)
+Tipas: MERN stack (MongoDB, Express, React, Node.js) - (TypeScript Galima naudoti, tačiau nebūtina.)
+Projektas turi būti patalpintas GitHub!
+
+📌 Projekto tikslas:
+Sukurti paprastą užduočių valdymo sistemą su vartotojo autentifikacija.
+Kiekvienas vartotojas gali prisijungti, kurti, peržiūrėti, redaguoti ir trinti bendras užduotis.
+
+💡 Naudojamos technologijos:
+
+- Frontend: React, Axios
+- Backend: Node.js
+- Duomenų bazė: MongoDB
+- Autentifikacija: JWT (JSON Web Token), bcrypt
+
+ 🎨 Dizainas:
+
+ - Dizainas turi būti **responsyvus** (veikti tiek telefone, tiek kompiuteryje).
+ - Gali būti naudojamas CSS Framework (Bootstrap), bet nebūtina.
+
+ 🧩 Funkcionalumas:
+
+ 1. Prisijungimo / Registracijos puslapis:
+ - Registracija: vardas, el. paštas, slaptažodis
+ - Prisijungimas: el. paštas, slaptažodis
+ - Prisijungus – JWT saugomas localStorage
+
+2. Pagrindinis puslapis (Dashboard):
+- **Tik prisijungusiam vartotojui**
+- Jei vartotojas neprisijungęs – automatiškai nukreipiamas į login puslapį
+- Rodomos tik prisijungusio vartotojo užduotys
+- Mygtukas „+ Nauja užduotis“
+
+3. Sukurti naują užduotį:
+- Forma: pavadinimas, aprašymas, statusas (pvz. "nebaigta", "baigta")
+- Mygtukas „Išsaugoti“
+- Pridėti užduotis galima **tik kai vartotojas yra prisijungęs**
+*
+4. Redaguoti užduotį:
+- Pakeisti pavadinimą, aprašymą, statusą
+*
+5. Ištrinti užduotį:
+- Mygtukas „Ištrinti“
+*
+6. Atsijungti:
+- Mygtukas, kuris išvalo JWT ir grąžina į login puslapį
+
+ 🔐 Apsaugotas maršrutas (ProtectedRoute):
+
+- /dashboard turi būti apsaugotas route'as:
+- Jei JWT neegzistuoja – vartotojas nukreipiamas į prisijungimo puslapį
+- Tik prisijungę vartotojai gali pasiekti užduočių sąrašą ir formas
+
+Backend API struktūra (Express + MongoDB):
+* POST /api/register - Naujo vartotojo registracija
+* POST /api/login - Prisijungimas (su JWT)
+* GET /api/tasks - Gauti užduotis (autorizacija)
+* POST /api/tasks - Sukurti naują užduotį
+* PUT /api/tasks/:id - Atnaujinti užduotį
+* DELETE /api/tasks/:id - Ištrinti užduotį
+
+🌱 Papildomos idėjos (neprivaloma):
+- Atvaizduoti užduotis tik tam skirtam vartotojui.
+- Užduočių filtravimas (pagal statusą).
